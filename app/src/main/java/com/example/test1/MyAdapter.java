@@ -27,6 +27,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public TextView TextView_title;
         public TextView TextView_description;
         public SimpleDraweeView ImageView_title;
+        public View rootView;
 //        public SimpleDraweeView ImageView_title;
         //4.여기서 자식들 뷰들이 찾아서 쓴다.
         public MyViewHolder(View v) {
@@ -34,6 +35,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             TextView_title = v.findViewById(R.id.TextView_title);
             TextView_description = v.findViewById(R.id.TextView_description);
             ImageView_title = (SimpleDraweeView) v.findViewById(R.id.ImageView_title);
+            rootView = v;
+
+            //setClickable : 클릭을 할 수 있다 없다 / setEnabled :활성화 상태이다,아니다 의미
+            v.setClickable(true);
+            v.setEnabled(true);
+            v.setOnClickListener(onClickListener);
         }
     }
 
@@ -42,8 +49,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     //어뎁터 받아온 받아온걸 위에 자식에게 뿌려준다.
     //+ 액티비티가 아닌 곳에서 Context를 쓰기 위해 액티비티에서 Context값을 넘겨 가져 온다.(해보면서 이해 해야할듯)
     //하지만 액티비티 Context를 하면 누수가 생겨서 좋은 점은 아님
-    public MyAdapter(List<NewsData> myDataset, Context context) {
+    public MyAdapter(List<NewsData> myDataset, Context context, View.OnClickListener onClick) {
         mDataset = myDataset;
+        onClickListener = onClick;
         Fresco.initialize(context);
 
     }
@@ -80,6 +88,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         Uri uri = Uri.parse(news.getUrlToImage());//데이터에 들어있는 이미지 주소 바꿉
         holder.ImageView_title.setImageURI(uri);  //해당 Uri 주소 이미지 가져 오기 위한
 
+        //여긴 태그만 달아주면 된다. 내가 누구를 눌렀고 누구인지 하기 위해서
+        holder.rootView.setTag(position);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -89,4 +99,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return mDataset == null ? 0 : mDataset.size();
     }
 
+    public NewsData getNews(int position){
+        return mDataset != null ? mDataset.get(position) : null;
+    }
 }

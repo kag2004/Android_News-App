@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "464301089851",
+    "firebase_url": "https://jung-54643.firebaseio.com",
+    "project_id": "jung-54643",
+    "storage_bucket": "jung-54643.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464301089851:android:79b2a8493425fd3644681e",
+        "android_client_info": {
+          "package_name": "com.example.test1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464301089851-tui649rk689jnh48nb794a5d40rum531.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBP0CmKgQLagcqc2RP_G8JUUyajDtSAKAs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464301089851-tui649rk689jnh48nb794a5d40rum531.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

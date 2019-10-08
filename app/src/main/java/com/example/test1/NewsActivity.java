@@ -1,10 +1,12 @@
 package com.example.test1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -91,7 +93,22 @@ public class NewsActivity extends AppCompatActivity {
 
                             //여기가 mAdapter, mRecyclerView 뉴스 모든 정보가 여기로 들어온다.
                             //NewsData 클래스에서 NewsData(즉 Mydata)
-                            mAdapter = new MyAdapter(news, NewsActivity.this);
+                            mAdapter = new MyAdapter(news, NewsActivity.this, new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    //이 포지션을 찾아서 해당 클릭이 뭔지 알 수 있다.
+                                    Object obj = v.getTag();
+                                    if(obj != null){
+                                        int position = (int)obj;
+
+                                        //((MyAdapter)mAdapter) : 클랜스 변환 // 해당 포지션의 대한 뉴스 데이터를 가져온다.
+                                        ((MyAdapter)mAdapter).getNews(position);
+                                        Intent intent = new Intent(NewsActivity.this, NewsDetailActivity.class);
+                                        intent.putExtra("news", ((MyAdapter)mAdapter).getNews(position));
+                                        startActivity(intent);
+                                    }
+                                }
+                            });
                             mRecyclerView.setAdapter(mAdapter);
 
                         } catch (JSONException e) {
