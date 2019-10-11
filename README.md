@@ -9,3 +9,5 @@
 <img src="https://user-images.githubusercontent.com/29866140/66541663-05a15d00-eb6b-11e9-96dd-1cf81c4f2bc2.png" width="40%"/>
 <img src="https://user-images.githubusercontent.com/29866140/66541664-05a15d00-eb6b-11e9-9393-28b2c1f007ef.png" width="40%"/>
 </div>
+
+[![HitCount](http://hits.dwyl.io/kag2004/kag2004/Android_News-App.svg)](http://hits.dwyl.io/kag2004/kag2004/Android_News-App)
